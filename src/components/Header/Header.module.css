@@ -1,0 +1,31 @@
+/* .header {
+  position: relative;
+  text-align: center;
+}
+
+.headerBackground {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 72px;
+}
+
+.headerText {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-style:italic;
+  color: #333;
+  font-size: 42px;
+  font-family:'Courier New', Courier, monospace;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); 
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+} */

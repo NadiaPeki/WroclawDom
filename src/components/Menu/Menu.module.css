@@ -1,0 +1,47 @@
+.menu {
+  background-color: #333;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  font-size: 30px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; 
+  gap: 300px;
+}
+
+
+.menuLink {
+  color:bisque;
+  text-decoration: none;
+}
+
+.menuLeft {
+  display:flex;
+  gap: 160px;
+}
+
+.menuLink:hover {
+  text-decoration: underline;
+}
+
+.menuLink img {
+  width: 75px;
+  height: 68px;
+  border-radius: 15px;
+}
+
+.logo {
+  padding-top: 7px;
+  
+}
+
+
+
+
+/* .menuLink.active {
+  font-weight:bold;
+  color: rgb(140, 140, 35);
+  text-decoration: none;
+} */

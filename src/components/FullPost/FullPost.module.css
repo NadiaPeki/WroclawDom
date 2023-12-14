@@ -1,0 +1,50 @@
+.fullPostWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+  margin: 0 auto; /* Добавлено для центрирования по горизонтали */
+  padding: 50px;
+}
+.fullPostContent {
+  padding: 20px;
+  /* margin-bottom: 20px; */
+  overflow: hidden;
+}
+
+.fullPostContent p {
+  max-width: 80%;
+  color: black;
+  font-size: 20px;
+  margin-top: 25px;
+}
+
+.fullPostContent h1 {
+  max-width: 80%;
+  color: black;
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-top: 70px;
+}
+
+.fullPostContent h2 {
+  font-size: 20px;
+  padding-bottom: 10px;
+  color:black;
+}
+
+.fullPostImage {
+  width: 80%;
+  height: auto;
+  object-fit: cover;
+}
+
+.shareButtons {
+  padding: 1rem 0;
+}
+
+ .shareButton {
+  margin-right: 1em;
+} 
+
