@@ -1,14 +1,23 @@
-const express = require('express');
+const express = require('express')
+const mongoose = require('mongoose')
+const Post = require('./models/post')
+const postRoutes = require('./routes/post-routes')
+
+
+const PORT = process.env.PORT || 3002;
+const URL = 'mongodb://localhost:27017/postsbox'
+
 const app = express();
-const port = process.env.PORT || 3002;
-
 app.use(express.json());
+app.use(postRoutes)
 
-// Роут для теста
-app.get('/', (req, res) => {
-  res.send('Привет, это серверная часть твоего проекта!');
+mongoose
+.connect(URL)
+.then(() => console.log('Connected to MongoDB'))
+.catch((err) => console.log(`DB Connection error: ${err}`))
+
+app.listen(PORT, (err) => {
+  err ? console.log(err) : console.log(`Listening port ${PORT}`)
 });
 
-app.listen(port, () => {
-  console.log(`Сервер запущен на порту ${port}`);
-});
+
