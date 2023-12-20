@@ -11,10 +11,10 @@ const postSchema = new Schema({
         type: Date,
         required: true,
     },
-    imageUrl: {
-        type: String,
+    imageUrl: [{
+        type: String, // imageUrl массив ссылок
         required: true,
-    },
+    }],
     text: {
         type: String,
         required: true,

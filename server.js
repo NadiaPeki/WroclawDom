@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(postRoutes)
 
 mongoose
-.connect(URL)
+.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => console.log('Connected to MongoDB'))
 .catch((err) => console.log(`DB Connection error: ${err}`))
 
