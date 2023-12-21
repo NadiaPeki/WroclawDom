@@ -1,43 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Input from '../Input/Input';
 import FilteredPosts from '../FilteredPosts/FilteredPosts';
-import postsData from './postsData';
 import styles from './Posts.module.css';
 
-const filterPosts = (allPosts, searchText) => {
-  return allPosts.filter((post) => {
-    const searchLower = searchText.toLowerCase();
-    const postDateLower = post.date.toLowerCase();
-
-    return (
-      post.title.toLowerCase().includes(searchLower) ||
-      post.text.toLowerCase().includes(searchLower) ||
-      postDateLower.includes(searchLower) ||
-      postDateLower.replace(/[^\w\s]/gi, '').includes(searchLower)
-    );
-  });
-};
-
 const Posts = () => {
-  const [filteredPosts, setFilteredPosts] = useState(postsData);
+  const [allPosts, setAllPosts] = useState([]);
   const [searchText, setSearchText] = useState('');
 
-  const handleSearch = (text) => {
-    // Устанавливаем отфильтрованные посты в состояние
-    setFilteredPosts((prevPosts) => filterPosts(prevPosts, text));
-    setSearchText(searchText); // Обновляем состояние searchText
-  };
+  useEffect(() => {
+    // Выполнение запроса на сервер для получения всех постов
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get('http://localhost:3002/posts');
+        setAllPosts(response.data);
+      } catch (error) {
+        console.error('Ошибка при получении постов:', error);
+      }
+    };
 
-  const handleSearchComplete = () => {
-    setSearchText(''); // Очищаем состояние searchText
+    fetchPosts();
+  }, []); // Пустой массив зависимостей гарантирует выполнение запроса только один раз при монтировании компонента
+
+  const handleSearch = (text) => {
+    // Обновление состояния searchText
+    setSearchText(text);
   };
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.input}>
-        <Input onSearch={handleSearch} onSearchComplete={handleSearchComplete} />
-      </div>
-      <FilteredPosts filteredPosts={filteredPosts} />
+      <Input onSearch={handleSearch} />
+      <FilteredPosts allPosts={allPosts} searchText={searchText} />
     </div>
   );
 };

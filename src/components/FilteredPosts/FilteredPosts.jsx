@@ -1,7 +1,20 @@
 import Post from '../Post/Post';
 import styles from './FilteredPosts.module.css';
 
-const FilteredPosts = ({ filteredPosts }) => {
+const FilteredPosts = ({ allPosts, searchText }) => {
+  // Фильтрация постов на основе текста поиска
+  const filteredPosts = allPosts.filter((post) => {
+    const searchLower = searchText.toLowerCase();
+    const postDateLower = post.date.toLowerCase();
+
+    return (
+      post.title.toLowerCase().includes(searchLower) ||
+      post.text.toLowerCase().includes(searchLower) ||
+      postDateLower.includes(searchLower) ||
+      postDateLower.replace(/[^\w\s]/gi, '').includes(searchLower)
+    );
+  });
+
   return (
     <div className={styles.filteredPosts}>
       {filteredPosts.length > 0 ? (
