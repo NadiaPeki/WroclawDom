@@ -12,19 +12,21 @@ const Post = ({ post }) => {
 
   return (
     <Link
-      to={`/posts/${post.id}-${post.title.replace(/\s+/g, '-')}`}
+      to={`/posts/${post.title.replace(/\s+/g, '-')}`}
       className={styles.postLink}
       onClick={toggleExpand}
     >
       <div className={styles.post}>
         <h1>{title}</h1>
         <h2>{date}</h2>
-        <img
-  src={`${process.env.PUBLIC_URL}${imageUrl}?${new Date().getTime()}`}
-  alt={title}
-  className={styles.postImage}
-/>
-
+        {imageUrl.map((imagePath, _id) => (
+          <img
+            key={_id}
+            src={`${process.env.PUBLIC_URL}${imagePath}?${new Date().getTime()}`}
+            alt={title}
+            className={styles.postImage}
+          />
+        ))}
         <p>{isExpanded ? text : `${text.slice(0, 200)}...`}</p>
       </div>
     </Link>

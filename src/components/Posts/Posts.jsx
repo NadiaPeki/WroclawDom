@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Input from '../Input/Input';
-import FilteredPosts from '../FilteredPosts/FilteredPosts';
+import Post from '../Post/Post';
 import styles from './Posts.module.css';
 
 const Posts = () => {
   const [allPosts, setAllPosts] = useState([]);
-  const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
     // Выполнение запроса на сервер для получения всех постов
@@ -22,15 +21,14 @@ const Posts = () => {
     fetchPosts();
   }, []); // Пустой массив зависимостей гарантирует выполнение запроса только один раз при монтировании компонента
 
-  const handleSearch = (text) => {
-    // Обновление состояния searchText
-    setSearchText(text);
-  };
-
   return (
     <div className={styles.wrapper}>
-      <Input onSearch={handleSearch} />
-      <FilteredPosts allPosts={allPosts} searchText={searchText} />
+      <Input />
+      <div className={styles.posts}>
+        {allPosts.map((post) => (
+          <Post key={post._id} post={post} />
+        ))}
+      </div>
     </div>
   );
 };

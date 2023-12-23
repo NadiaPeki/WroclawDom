@@ -1,24 +1,32 @@
 import { useParams } from 'react-router-dom';
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react';
 import { FacebookShareButton, TelegramShareButton, WhatsappShareButton } from 'react-share';
 import { SocialIcon } from 'react-social-icons';
 import styles from './FullPost.module.css';
 import axios from 'axios';
 
 const FullPost = () => {
-  const { postId } = useParams();
+  const { _id } = useParams(); // Изменено на _id
   const [selectedPost, setSelectedPost] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Запрос данных о посте по postId
-    axios.get(`http://localhost:3002/posts/${postId}`)
+    axios.get(`http://localhost:3002/posts/${_id}`) // Изменено на _id
       .then(response => {
-        setSelectedPost(response.data);
+        if (response.data) {
+          setSelectedPost(response.data);
+        } else {
+          setError('Error fetching post: Empty response data');
+        }
       })
       .catch(error => {
-        console.error('Error fetching post:', error);
+        setError('Error fetching post: ' + error.message);
       });
-  }, [postId]);
+  }, [_id]); // Изменено на _id
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   if (!selectedPost) {
     return <h3>Loading...</h3>;
@@ -32,7 +40,9 @@ const FullPost = () => {
       <div className={styles.fullPostContent}>
         <h1>{title}</h1>
         <h2>{date}</h2>
-        <img src={imageUrl} alt={title} className={styles.fullPostImage} />
+        {imageUrl && imageUrl.length > 0 && (
+          <img src={imageUrl[0]} alt={title} className={styles.fullPostImage} />
+        )}
         <p>{text}</p>
         <div className={styles.shareButtons}>
           <FacebookShareButton url={postUrl}>

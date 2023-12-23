@@ -22,6 +22,11 @@ app.use(express.json());
 
 // Middleware для обслуживания статических файлов
 app.use(express.static(path.join(__dirname, 'public')));
+// Middleware для обработки ошибок
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Something went wrong!' });
+});
 
 // Подключение роутов
 const postRoutes = require('./routes/post-routes');

@@ -16,15 +16,20 @@ const getPosts = (req, res) => {
 }
 
 const getPost = (req, res) => {
-    Post
-      .findById(req.params.id)  
-      .then((post) => {
-        res
-        .status(200)
-        .json(post)
-      })
-      .catch((err) => handleError(res, err))
-}
+  const postId = req.params.id; // Получаем id из параметров запроса
+
+  Post.findOne({ _id: postId })
+    .then((post) => {
+      if (!post) {
+        return res.status(404).json({ error: 'Post not found' });
+      }
+      res.status(200).json(post);
+    })
+    .catch((err) => {
+      console.error('Error fetching post:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
+};
 
 const deletePost = (req, res) => {
     Post
