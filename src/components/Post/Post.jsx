@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import styles from './Post.module.css'
+import styles from './Post.module.css';
 
 const Post = ({ post }) => {
   const { imageUrl, title, text, date } = post;
@@ -10,18 +10,25 @@ const Post = ({ post }) => {
     setIsExpanded(!isExpanded);
   };
 
- 
-
   return (
-    <Link to={`/posts/${post.id}-${post.title.replace(/\s+/g, '-')}`} className={styles.postLink} onClick={toggleExpand}>
+    <Link
+      to={`/posts/${post.id}-${post.title.replace(/\s+/g, '-')}`}
+      className={styles.postLink}
+      onClick={toggleExpand}
+    >
       <div className={styles.post}>
         <h1>{title}</h1>
         <h2>{date}</h2>
-        <img src={imageUrl} alt={title} className={styles.postImage} />
+        <img
+  src={`${process.env.PUBLIC_URL}${imageUrl}?${new Date().getTime()}`}
+  alt={title}
+  className={styles.postImage}
+/>
+
         <p>{isExpanded ? text : `${text.slice(0, 200)}...`}</p>
       </div>
     </Link>
   );
-}
+};
 
 export default Post;

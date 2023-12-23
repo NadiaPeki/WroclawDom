@@ -2,11 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const Post = require('./models/post');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3002;
 const URL = 'mongodb://127.0.0.1:27017/postsbox';
-
 
 const corsOptions = {
   origin: 'http://localhost:3000', // Замените на домен вашего фронтенда
@@ -20,6 +20,8 @@ app.options('*', cors(corsOptions));
 // Middleware для обработки JSON в запросах
 app.use(express.json());
 
+// Middleware для обслуживания статических файлов
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Подключение роутов
 const postRoutes = require('./routes/post-routes');
@@ -33,7 +35,6 @@ mongoose
   })
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.log(`DB Connection error: ${err}`));
-
 
 // Запуск сервера
 app.listen(PORT, () => {

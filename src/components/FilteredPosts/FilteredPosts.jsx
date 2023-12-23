@@ -19,7 +19,7 @@ const FilteredPosts = ({ allPosts, searchText }) => {
     <div className={styles.filteredPosts}>
       {filteredPosts.length > 0 ? (
         filteredPosts.map((post) => (
-          <Post key={post.id} post={post} />
+          <Post key={post._id} post={post} />
         ))
       ) : (
         <p className={styles.noResults}>Brak wyników</p>
