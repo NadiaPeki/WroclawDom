@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Input from '../Input/Input';
 import Post from '../Post/Post';
@@ -8,7 +8,6 @@ const Posts = () => {
   const [allPosts, setAllPosts] = useState([]);
 
   useEffect(() => {
-    // Выполнение запроса на сервер для получения всех постов
     const fetchPosts = async () => {
       try {
         const response = await axios.get('http://localhost:3002/posts');
@@ -19,14 +18,15 @@ const Posts = () => {
     };
 
     fetchPosts();
-  }, []); // Пустой массив зависимостей гарантирует выполнение запроса только один раз при монтировании компонента
+  }, []);
 
   return (
     <div className={styles.wrapper}>
       <Input />
+      {/* Удален код, связанный с useNavigate */}
       <div className={styles.posts}>
         {allPosts.map((post) => (
-          <Post key={post._id} post={post} />
+          <Post key={post.slug} post={post} />
         ))}
       </div>
     </div>

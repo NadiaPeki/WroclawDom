@@ -21,7 +21,7 @@ function App() {
         <Route path="rent" element={<Rent />} />
         <Route path="buysell" element={<BuySell />} />
         <Route path="architecture" element={<Architecture />} />
-        <Route path="/posts/:_id" element={<FullPost />} />
+        <Route path="/posts/:slug" element={<FullPost />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

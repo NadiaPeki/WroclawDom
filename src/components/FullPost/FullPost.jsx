@@ -1,28 +1,40 @@
-import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { FacebookShareButton, TelegramShareButton, WhatsappShareButton } from 'react-share';
 import { SocialIcon } from 'react-social-icons';
 import styles from './FullPost.module.css';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const FullPost = () => {
-  const { _id } = useParams(); // Изменено на _id
+  const { slug } = useParams();
   const [selectedPost, setSelectedPost] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:3002/posts/${_id}`) // Изменено на _id
-      .then(response => {
+    const fetchData = async () => {
+      try {
+        if (!slug) {
+          setError('Error fetching post: Slug is undefined');
+          return;
+        }
+
+        const response = await axios.get(`http://localhost:3002/posts/${slug}`);
+        console.log('Response data:', response.data);
+
         if (response.data) {
-          setSelectedPost(response.data);
+          const matchingPost = response.data;
+          setSelectedPost(matchingPost);
         } else {
           setError('Error fetching post: Empty response data');
         }
-      })
-      .catch(error => {
-        setError('Error fetching post: ' + error.message);
-      });
-  }, [_id]); // Изменено на _id
+      } catch (error) {
+        console.error('Error fetching post:', error);
+        setError('Error fetching post: Something went wrong');
+      }
+    };
+
+    fetchData();
+  }, [slug]);
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -32,8 +44,8 @@ const FullPost = () => {
     return <h3>Loading...</h3>;
   }
 
-  const { title, imageUrl, text, date } = selectedPost;
-  const postUrl = window.location.href;
+  const { imageUrl, title, text, date } = selectedPost;
+  const postUrl = `http://localhost:3000/posts/${slug}`;
 
   return (
     <div className={styles.fullPostWrapper}>

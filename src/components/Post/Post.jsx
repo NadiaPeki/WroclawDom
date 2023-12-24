@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styles from './Post.module.css';
 
 const Post = ({ post }) => {
-  const { imageUrl, title, text, date } = post;
+  const { imageUrl, title, text, date, slug } = post;
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
@@ -12,7 +12,7 @@ const Post = ({ post }) => {
 
   return (
     <Link
-      to={`/posts/${post.title.replace(/\s+/g, '-')}`}
+      to={`/posts/${slug}`} // Изменили ссылку с /posts/${post._id} на /posts/${slug}
       className={styles.postLink}
       onClick={toggleExpand}
     >
