@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { FacebookShareButton, TelegramShareButton, WhatsappShareButton } from 'react-share';
 import { SocialIcon } from 'react-social-icons';
+import { format } from 'date-fns';
 import styles from './FullPost.module.css';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -19,7 +20,6 @@ const FullPost = () => {
         }
 
         const response = await axios.get(`http://localhost:3002/posts/${slug}`);
-        console.log('Response data:', response.data);
 
         if (response.data) {
           const matchingPost = response.data;
@@ -44,18 +44,26 @@ const FullPost = () => {
     return <h3>Loading...</h3>;
   }
 
-  const { imageUrl, title, text, date } = selectedPost;
+  const { imageUrl, title, text, date, category } = selectedPost;
   const postUrl = `http://localhost:3000/posts/${slug}`;
+
+  // Предположим, что в базе данных текст хранится с использованием тегов и нужно добавить разбиение на абзацы
+  const formattedText = text.split('\n').map((paragraph, index) => (
+    // Используем dangerouslySetInnerHTML для выделения нужных частей текста
+    <p key={index} dangerouslySetInnerHTML={{ __html: paragraph }}></p>
+  ));
 
   return (
     <div className={styles.fullPostWrapper}>
       <div className={styles.fullPostContent}>
         <h1>{title}</h1>
-        <h2>{date}</h2>
+        <h2>{format(new Date(date), 'dd.MM.yyyy')}</h2>
+        <h3>{category}</h3>
         {imageUrl && imageUrl.length > 0 && (
           <img src={imageUrl[0]} alt={title} className={styles.fullPostImage} />
         )}
-        <p>{text}</p>
+        {/* Используем разбиение на абзацы и dangerous... для выделения нужных частей текста */}
+        <div className={styles.fullText}>{formattedText}</div>
         <div className={styles.shareButtons}>
           <FacebookShareButton url={postUrl}>
             <SocialIcon url='https://www.facebook.com/' title={`Share this post by Facebook`} className={styles.shareButton} />

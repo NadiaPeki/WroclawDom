@@ -89,28 +89,34 @@ const addPost = (req, res) => {
     });
 }
 
-const updatePost = (req, res) => {
-  Post
-    .findByIdAndUpdate(req.params.id, req.body)
-    .then((result) => {
-      if (!result) {
-        console.error('Post not found for update');  // Добавьте этот лог
-        return res.status(404).json({ error: 'Post not found' });
-      }
-      res
-        .status(200)
-        .json(result)
-    })
-    .catch((err) => {
-      console.error('Error updating post:', err);
-      handleError(res, err);
-    });
-}
+const updatePosts = async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const { category } = req.body;
+
+    const post = await Post.findByIdAndUpdate(
+      postId,
+      { category },
+      { new: true } // чтобы получить обновленный документ
+    );
+
+    if (!post) {
+      console.error('Post not found for update');
+      return res.status(404).json({ error: 'Post not found' });
+    }
+
+    res.status(200).json(post);
+  } catch (error) {
+    console.error('Error updating post:', error);
+    handleError(res, error);
+  }
+};
+
 
 module.exports = {
   getPosts,
   getPostBySlug,
   deletePost,
   addPost,
-  updatePost
+  updatePosts
 }

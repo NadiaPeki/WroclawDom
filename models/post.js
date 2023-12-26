@@ -22,8 +22,11 @@ const postSchema = new Schema({
   slug: {
     type: String,
   },
+  category: {
+    type: String, // Используйте тип, который соответствует вашим рубрикам, например, String
+    required: true,
+  },
 });
-
 
 const Post = mongoose.model('Post', postSchema);
 

@@ -8,7 +8,7 @@
   top: 0;
   width: 100%;
   z-index: 1000; 
-  gap: 300px;
+  gap: 200px;
 }
 
 
@@ -19,7 +19,7 @@
 
 .menuLeft {
   display:flex;
-  gap: 160px;
+  gap: 100px;
 }
 
 .menuLink:hover {

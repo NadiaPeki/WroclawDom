@@ -23,15 +23,22 @@
 .fullPostContent h1 {
   max-width: 80%;
   color: black;
-  font-size: 30px;
+  font-size: 32px;
   margin-bottom: 20px;
   margin-top: 70px;
 }
 
 .fullPostContent h2 {
-  font-size: 20px;
+  font-size: 22px;
   padding-bottom: 10px;
   color:black;
+}
+
+.fullPostContent h3{
+  font-size: 18px;
+  font-style: italic;
+  padding-bottom: 10px;
+  color:rgb(104, 100, 100);
 }
 
 .fullPostImage {
@@ -47,4 +54,13 @@
  .shareButton {
   margin-right: 1em;
 } 
+.fullText {
+  font-size: 16px;
+  color: black;
+}
+.fullPostContent img {
+  max-width: 100%; /* Максимальная ширина изображения равна ширине контента */
+  height: auto;    /* Сохранение пропорций изображения */
+}
+
 

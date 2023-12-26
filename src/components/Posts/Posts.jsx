@@ -23,7 +23,6 @@ const Posts = () => {
   return (
     <div className={styles.wrapper}>
       <Input />
-      {/* Удален код, связанный с useNavigate */}
       <div className={styles.posts}>
         {allPosts.map((post) => (
           <Post key={post.slug} post={post} />

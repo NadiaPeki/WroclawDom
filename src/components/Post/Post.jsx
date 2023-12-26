@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { format } from 'date-fns';
 import styles from './Post.module.css';
 
 const Post = ({ post }) => {
@@ -18,7 +19,7 @@ const Post = ({ post }) => {
     >
       <div className={styles.post}>
         <h1>{title}</h1>
-        <h2>{date}</h2>
+        <h2>{format(new Date(date), 'dd.MM.yyyy')}</h2>
         {imageUrl.map((imagePath, _id) => (
           <img
             key={_id}
@@ -27,7 +28,7 @@ const Post = ({ post }) => {
             className={styles.postImage}
           />
         ))}
-        <p>{isExpanded ? text : `${text.slice(0, 200)}...`}</p>
+        <p>{isExpanded ? text : `${text.slice(0, 300)}...`}</p>
       </div>
     </Link>
   );

@@ -16,16 +16,16 @@ import styles from './Menu.module.css'
           to="/"
           className={styles.menuLink}
         >
-          Home
-        </NavLink>
-        <NavLink to="rent" className={styles.menuLink}>
-          Rent
+          Główna
         </NavLink>
         <NavLink to="buysell" className={styles.menuLink}>
-          BuySell
+        Zakup i Sprzedaż
+        </NavLink>
+        <NavLink to="rent" className={styles.menuLink}>
+        Wynajem
         </NavLink>
         <NavLink to="architecture" className={styles.menuLink}>
-          Architecture
+        Design i Architektura
         </NavLink>
      </div>
      <AuthButtons className={styles.lastLink}/>
