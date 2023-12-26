@@ -28,7 +28,7 @@ const Post = ({ post }) => {
             className={styles.postImage}
           />
         ))}
-        <p>{isExpanded ? text : `${text.slice(0, 300)}...`}</p>
+        <p>{isExpanded ? text : `${text.slice(0, 165)}...`}</p>
       </div>
     </Link>
   );

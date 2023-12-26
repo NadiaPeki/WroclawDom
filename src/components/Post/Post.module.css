@@ -30,7 +30,7 @@
 
 .postImage {
   width: 80%;
-  height: auto;
+  height: 650px;
   object-fit: cover;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
