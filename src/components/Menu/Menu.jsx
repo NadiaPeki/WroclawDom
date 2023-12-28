@@ -27,6 +27,9 @@ import styles from './Menu.module.css'
         <NavLink to="architecture" className={styles.menuLink}>
         Design i Architektura
         </NavLink>
+        <NavLink to="search" className={styles.menuLink}>
+        Search
+        </NavLink>
      </div>
      <AuthButtons className={styles.lastLink}/>
 </nav>

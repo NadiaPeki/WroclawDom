@@ -1,6 +1,10 @@
-.headerHeader {
-    color: #333;
-    font-size: 30px;
-    text-align: center;
-    margin-top: 10px;
-}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+    margin: 0 auto; /* Добавлено для центрирования по горизонтали */
+    padding-top: 100px;
+  }
+  

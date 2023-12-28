@@ -9,10 +9,10 @@ const PORT = process.env.PORT || 3002;
 const URL = 'mongodb://127.0.0.1:27017/postsbox';
 
 const corsOptions = {
-  origin: 'http://localhost:3000', // Замените на домен вашего фронтенда
+  origin: 'http://localhost:3000', 
   optionsSuccessStatus: 200,
-  credentials: true, // добавьте эту опцию, если используете куки или заголовок авторизации
-};
+  credentials: true, 
+}
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));

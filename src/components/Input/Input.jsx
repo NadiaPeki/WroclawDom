@@ -13,6 +13,14 @@ const Input = ({ onSearch }) => {
     setSearchText(''); // Очищаем значение после поиска
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      // Вызываем функцию поиска при нажатии Enter
+      onSearch(searchText);
+      setSearchText(''); // Очищаем значение после поиска
+    }
+  };
+
   return (
     <div className={styles.inputWithButton}>
       <input
@@ -20,6 +28,7 @@ const Input = ({ onSearch }) => {
         placeholder="Wpisz tekst do wyszukania"
         value={searchText}
         onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
         className={styles.input}
       />
       <button onClick={handleSearch} className={styles.inputButton}>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Input from '../Input/Input';
 import Post from '../Post/Post';
 import styles from './Posts.module.css';
 
@@ -20,9 +19,9 @@ const Posts = () => {
     fetchPosts();
   }, []);
 
+
   return (
     <div className={styles.wrapper}>
-      <Input />
       <div className={styles.posts}>
         {allPosts.map((post) => (
           <Post key={post.slug} post={post} />
