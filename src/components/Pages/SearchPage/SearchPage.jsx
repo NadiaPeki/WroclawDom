@@ -3,6 +3,7 @@ import axios from 'axios';
 import Input from '../../Input/Input';
 import FilteredPosts from '../../FilteredPosts/FilteredPosts';
 import styles from './SearchPage.module.css';
+import HeaderPosts from '../../HeaderPosts/HeaderPosts';
 
 const SearchPage = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -51,7 +52,11 @@ const SearchPage = () => {
       <Input onSearch={handleSearch} />
       <div className={styles.resultsContainer}>
         {searchText.trim() !== '' && searchResults.length === 0 && (
-          <p className={styles.noResults}>Brak wyników</p>
+          <div className={styles.noResults}><p className={styles.noResultsText}>Brak wyników</p>
+          <p className={styles.maybeText}>Być może te posty cię zainteresują.
+</p>
+          <HeaderPosts allPosts={allPosts} />
+            </div>
         )}
         {searchResults.length > 0 && (
           <FilteredPosts allPosts={searchResults} searchText={searchText} />

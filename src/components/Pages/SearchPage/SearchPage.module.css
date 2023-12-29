@@ -7,13 +7,26 @@
     margin: 0 auto; /* Добавлено для центрирования по горизонтали */
     padding-top: 100px;
      }
-  
+
 .noResults {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.noResultsText {
     color: black;
     font-size: 40px;
     font-weight: 700;
     margin-top: 30px;
-}
+  }
+
+  .maybeText {
+    color: black;
+    font-size: 30px;
+    margin-top: 20px;
+  }
 
   .post {
     margin: 20px; 
