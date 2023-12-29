@@ -5,6 +5,7 @@ import styles from './Posts.module.css';
 
 const Posts = () => {
   const [allPosts, setAllPosts] = useState([]);
+  const [visiblePosts, setVisiblePosts] = useState(6);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -19,14 +20,20 @@ const Posts = () => {
     fetchPosts();
   }, []);
 
+  const loadMorePosts = () => {
+    setVisiblePosts(prevVisiblePosts => prevVisiblePosts + 6);
+  };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.posts}>
-        {allPosts.map((post) => (
+        {allPosts.slice(0, visiblePosts).map((post) => (
           <Post key={post.slug} post={post} />
         ))}
       </div>
+      {visiblePosts < allPosts.length && (
+        <button className={styles.loadMoreButton} onClick={loadMorePosts}>Załaduj więcej</button>
+      )}
     </div>
   );
 };
