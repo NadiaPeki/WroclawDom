@@ -53,7 +53,7 @@ const SearchPage = () => {
       <div className={styles.resultsContainer}>
         {searchText.trim() !== '' && searchResults.length === 0 && (
           <div className={styles.noResults}><p className={styles.noResultsText}>Brak wyników</p>
-          <p className={styles.maybeText}>Być może te posty cię zainteresują.
+          <p className={styles.maybeText}>Być może te posty cię zainteresują
 </p>
           <HeaderPosts allPosts={allPosts} />
             </div>

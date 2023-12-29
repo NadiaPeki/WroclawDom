@@ -1,0 +1,12 @@
+.filteredPosts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+    margin: 0 auto; /* Добавлено для центрирования по горизонтали */
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
+ 

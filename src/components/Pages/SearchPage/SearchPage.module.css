@@ -5,7 +5,7 @@
     align-items: center;
     max-width: 80%;
     margin: 0 auto; /* Добавлено для центрирования по горизонтали */
-    padding-top: 100px;
+    padding-top: 130px;
      }
 
 .noResults {
@@ -28,7 +28,4 @@
     margin-top: 20px;
   }
 
-  .post {
-    margin: 20px; 
-  }
   
