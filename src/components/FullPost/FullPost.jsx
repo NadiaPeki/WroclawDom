@@ -65,10 +65,7 @@ const FullPost = () => {
         {/* Используем разбиение на абзацы и dangerous... для выделения нужных частей текста */}
         <div className={styles.fullText}>{formattedText}</div>
         <div className={styles.shareButtons}>
-          <FacebookShareButton url={postUrl}>
-            <SocialIcon url='https://www.facebook.com/' title={`Share this post by Facebook`} className={styles.shareButton} />
-          </FacebookShareButton>
-          <WhatsappShareButton url={postUrl}>
+                   <WhatsappShareButton url={postUrl}>
             <SocialIcon url='https://web.whatsapp.com/' title={`Share this post by What's App`} className={styles.shareButton} />
           </WhatsappShareButton>
           <TelegramShareButton url={postUrl}>

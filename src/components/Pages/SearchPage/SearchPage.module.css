@@ -5,8 +5,12 @@
     align-items: center;
     max-width: 80%;
     margin: 0 auto; /* Добавлено для центрирования по горизонтали */
-    padding-top: 130px;
+    padding-top: 100px;
      }
+
+.resultsContainer {
+  padding-top: 50px;
+}     
 
 .noResults {
     display: flex;
@@ -19,13 +23,12 @@
     color: black;
     font-size: 40px;
     font-weight: 700;
-    margin-top: 30px;
   }
 
   .maybeText {
     color: black;
     font-size: 30px;
-    margin-top: 20px;
+    padding-top: 30px;
   }
 
   
