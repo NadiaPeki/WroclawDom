@@ -23,7 +23,7 @@ const Home = () => {
   return (
     <div className={styles.wrapper}>
       <HeaderPosts allPosts={allPosts} />
-      <Posts />
+      <Posts className={styles.homePosts} />
     </div>
   );
 }

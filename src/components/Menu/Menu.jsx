@@ -5,12 +5,10 @@ import styles from './Menu.module.css'
   const Menu = () => {
     return (
        <nav className={styles.menu}>
-        
-       <NavLink to="/" end className={`${styles.menuLink} ${styles.logo} ${styles.firstLink}`}>
+      <NavLink to="/" end className={`${styles.menuLink} ${styles.logo} ${styles.firstLink}`}>
         <img src='/img/photos/logo.png' alt='logo' />
       </NavLink>
-     
-      <div className={styles.menuLeft}>
+      <div className={styles.linkText}>
       <NavLink
           end
           to="/"
@@ -30,8 +28,9 @@ import styles from './Menu.module.css'
         <NavLink to="search" className={styles.menuLink}>
         Search
         </NavLink>
-     </div>
-     <AuthButtons className={styles.lastLink}/>
+      </div>
+     
+        <AuthButtons className={styles.lastLink}/>
 </nav>
   
      

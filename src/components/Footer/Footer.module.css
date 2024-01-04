@@ -1,40 +1,70 @@
+/* Стили для .footer */
+
 .footer {
   background-color: #333;
   color: white;
   text-align: center;
   padding: 10px;
-  margin-top: auto;
+  position: fixed;
+  width: 100%;
+  bottom: -100px; /* Начальное значение, чтобы скрыть футер */
+  transition: bottom 0.5s ease; /* Анимация для плавного появления */
 }
-  .footerContent {
-    display: flex;
-    flex-direction: column;
-    justify-content:space-around;
-  }
-  
-  .contacts {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 5px;
-  }
-  .contacts p {
-    font-size: 20px;
-    color:bisque;
-  }
-  .details {
-    display: flex;
-    flex-direction: column;
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.contacts,
+.details {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.contacts p {
+  font-size: 20px;
+  color: bisque;
+}
+
+.details p {
+  font-size: 16px;
+  color: bisque;
+}
+
+.footerLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+
+/* Медиа-запрос для ширины экрана 600px и меньше */
+@media only screen and (max-width: 600px) {
+  .footer {
+    padding: 10px; 
   }
 
-   .details p {
-    font-size: 16px;
-    color:bisque;
-  } 
+  .footerContent {
+    flex-direction: column; 
+  }
+
+  .contacts,
+  .details {
+    margin-bottom: 5px; 
+  }
+
+  .contacts p {
+    font-size: 16px; 
+  }
+
+  .details p {
+    font-size: 12px; 
+  }
 
   .footerLinks {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5px;
+    margin-top: 5px; 
   }
-
-  
+}
