@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Posts from "../../Posts/Posts";
-import HeaderPosts from "../../HeaderPosts/HeaderPosts"; // Подставьте ваш путь к HeaderPosts
-import styles from './Home.module.css';
+import HeaderPosts from "../../HeaderPosts/HeaderPosts"; 
+import styles from './Home.module.css'
 
 const Home = () => {
   const [allPosts, setAllPosts] = useState([]);

@@ -3,13 +3,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 80%;
-    margin: 0 auto; /* Добавлено для центрирования по горизонтали */
+    margin: 0 auto; 
     padding-top: 100px;
-     }
+    min-height: 100vh;
+  }
 
 .resultsContainer {
   padding-top: 50px;
+  flex: 1;
 }     
 
 .noResults {
@@ -31,4 +32,38 @@
     padding-top: 30px;
   }
 
+  @media only screen and (max-width: 1200px) {
+    .noResultsText {
+      font-size: 30px;
+    }
+    .maybeText {
+      font-size: 26px;
+    }
+    .headerPostsContainer {
+      padding-top: 0px;
+    }
+    .resultsContainer {
+      padding-top: 20px;
+    }     
+  }
+  
+
+ @media only screen and (max-width: 750px) {
+  .searchPage {
+      padding-top: 150px;
+  }
+  .resultsContainer {
+    padding-top: 0px;
+  }  
+  .noResultsText {
+    padding-top: 20px;
+   }
+   }
+
+  @media only screen and (max-width: 600px) {
+  .maybeText {
+    display: none;
+   }
+   }
+  
   

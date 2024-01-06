@@ -1,4 +1,3 @@
-// HeaderPosts.jsx
 import { useEffect, useState } from 'react';
 import Post from '../Post/Post';
 import styles from './HeaderPosts.module.css';

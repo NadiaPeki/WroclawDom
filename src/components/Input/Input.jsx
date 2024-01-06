@@ -10,14 +10,13 @@ const Input = ({ onSearch }) => {
 
   const handleSearch = () => {
     onSearch(searchText);
-    setSearchText(''); // Очищаем значение после поиска
+    setSearchText(''); 
   };
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      // Вызываем функцию поиска при нажатии Enter
       onSearch(searchText);
-      setSearchText(''); // Очищаем значение после поиска
+      setSearchText('');
     }
   };
 

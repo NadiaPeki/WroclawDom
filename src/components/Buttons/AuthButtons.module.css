@@ -41,16 +41,15 @@
     border: none;
     font-size: 24px;
     cursor: pointer;
-    color: #333; /* Цвет крестика */
+    color: #333; 
   }
-  
   .closeButton:hover {
-    color: #555; /* Цвет крестика при наведении */
+    color: #555;
   }
 
     .icon {
     padding: 1px;
-    font-size: 20px; /* Размер иконок */
+    font-size: 20px; 
     color:  #474739; ;
   }
   

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FacebookShareButton, TelegramShareButton, WhatsappShareButton } from 'react-share';
+import { TelegramShareButton, WhatsappShareButton } from 'react-share';
 import { SocialIcon } from 'react-social-icons';
 import { format } from 'date-fns';
 import styles from './FullPost.module.css';
@@ -47,7 +47,6 @@ const FullPost = () => {
   const { imageUrl, title, text, date, category } = selectedPost;
   const postUrl = `http://localhost:3000/posts/${slug}`;
 
-  // Предположим, что в базе данных текст хранится с использованием тегов и нужно добавить разбиение на абзацы
   const formattedText = text.split('\n').map((paragraph, index) => (
     // Используем dangerouslySetInnerHTML для выделения нужных частей текста
     <p key={index} dangerouslySetInnerHTML={{ __html: paragraph }}></p>
@@ -62,7 +61,6 @@ const FullPost = () => {
         {imageUrl && imageUrl.length > 0 && (
           <img src={imageUrl[0]} alt={title} className={styles.fullPostImage} />
         )}
-        {/* Используем разбиение на абзацы и dangerous... для выделения нужных частей текста */}
         <div className={styles.fullText}>{formattedText}</div>
         <div className={styles.shareButtons}>
                    <WhatsappShareButton url={postUrl}>

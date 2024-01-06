@@ -55,8 +55,10 @@ const SearchPage = () => {
           <div className={styles.noResults}><p className={styles.noResultsText}>Brak wyników</p>
           <p className={styles.maybeText}>Być może te posty cię zainteresują
 </p>
-          <HeaderPosts allPosts={allPosts} />
-            </div>
+<div className={styles.headerPostsContainer}>
+<HeaderPosts allPosts={allPosts} />
+</div>
+</div>
         )}
         {searchResults.length > 0 && (
           <FilteredPosts allPosts={searchResults} searchText={searchText} />

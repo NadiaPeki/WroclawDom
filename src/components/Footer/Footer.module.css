@@ -1,15 +1,12 @@
-/* Стили для .footer */
-
 .footer {
   background-color: #333;
   color: white;
   text-align: center;
   padding: 10px;
-  position: fixed;
   width: 100%;
-  bottom: -100px; /* Начальное значение, чтобы скрыть футер */
-  transition: bottom 0.5s ease; /* Анимация для плавного появления */
-}
+  position: relative;
+  bottom: 0;
+ }
 
 .footerContent {
   display: flex;
@@ -41,7 +38,6 @@
   margin-top: 5px;
 }
 
-/* Медиа-запрос для ширины экрана 600px и меньше */
 @media only screen and (max-width: 600px) {
   .footer {
     padding: 10px; 
@@ -57,7 +53,7 @@
   }
 
   .contacts p {
-    font-size: 16px; 
+    font-size: 14px; 
   }
 
   .details p {

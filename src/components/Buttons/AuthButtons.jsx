@@ -8,12 +8,10 @@ const AuthButtons = () => {
 
   const handleRegisterClick = () => {
     setShowRegisterModal(true);
-    // Дополнительная логика для регистрации...
   };
 
   const handleLoginClick = () => {
     setShowLoginModal(true);
-    // Дополнительная логика для входа...
   };
 
   const handleCloseRegisterModal = () => {

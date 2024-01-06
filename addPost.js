@@ -1,6 +1,5 @@
 const axios = require('axios');
 const slugify = require('slugify');
-const striptags = require('striptags');
 
 const post = {
     title: "Przeprowadzka na nowe miejsce: Porady dotyczące Zachowania Zdrowego Rozsądku",
@@ -12,13 +11,12 @@ const post = {
     category: "Wynajem"
 };
 
-// Используйте slugify для создания слага из заголовка
+// Используем slugify для создания слага из заголовка
 const slug = slugify(post.title, { lower: true });
 
-// Добавьте slug к объекту поста
+// Добавляем slug к объекту поста
 post.slug = slug;
 
-// Используйте async/await для более читаемого кода
 async function addPost() {
     try {
         const response = await axios.post('http://localhost:3002/posts', post);
