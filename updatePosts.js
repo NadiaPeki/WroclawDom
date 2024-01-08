@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const slugify = require('slugify');
 const Post = require('./models/post');
 
-mongoose.connect('mongodb://127.0.0.1:27017/postsbox', {
+mongoose.connect('mongodb://127.0.0.1:27017/postsbase', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

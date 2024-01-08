@@ -6,16 +6,15 @@ const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3002;
-const URL = 'mongodb://127.0.0.1:27017/postsbox';
+const URL = 'mongodb+srv://napekarskaya:nadia060290i@cluster0.e3cmski.mongodb.net/postsbase';
 
 const corsOptions = {
-  origin: 'http://localhost:3000', 
+  origin: 'http://localhost:3000',
   optionsSuccessStatus: 200,
-  credentials: true, 
-}
+  credentials: true,
+};
 
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
 
 // Middleware для обработки JSON в запросах
 app.use(express.json());
@@ -30,17 +29,14 @@ app.use((err, req, res, next) => {
 const postRoutes = require('./routes/post-routes');
 app.use(postRoutes);
 
-// Middleware для обслуживания статических файлов
-app.use(express.static(path.join(__dirname, 'public')));
-
 // Подключение к MongoDB
 mongoose
-  .connect(URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(URL, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.log(`DB Connection error: ${err}`));
+  .catch((err) => {
+    console.error('DB Connection error:', err);
+    process.exit(1); // Завершаем процесс с ошибкой
+  });
 
 // Запуск сервера
 app.listen(PORT, () => {

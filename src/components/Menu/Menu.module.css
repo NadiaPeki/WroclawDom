@@ -30,8 +30,7 @@
 
 .menuLink img {
   width: 75px;
-  height: 68px;
-  border-radius: 15px;
+  height: 75px;
   padding-top: 7px;
 }
 
@@ -69,6 +68,11 @@
   }
   .linkText {
     gap: 20px;
+  }
+  .menuLink img {
+    width: 65px;
+    height: 65px;
+    padding-top: 5px;
   }
 }
 

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Post = require('../models/post');
 
 const handleError = (res, error) => {
-  console.error('Error:', error);  // Добавьте этот лог
+  console.error('Error:', error);  
   res.status(500).json({ error });
 }
 
@@ -15,30 +15,10 @@ const getPosts = (req, res) => {
         .json(posts)
     })
     .catch((err) => {
-      console.error('Error fetching posts:', err);  // Добавьте этот лог
+      console.error('Error fetching posts:', err); 
       handleError(res, err);
     });
 }
-
-// const getPost = (req, res) => {
-//   const postId = req.params.id;
-
-//   if (!mongoose.Types.ObjectId.isValid(postId)) {
-//     return res.status(400).json({ error: 'Invalid ObjectId' });
-//   }
-
-//   Post.findById(postId)
-//     .then((post) => {
-//       if (!post) {
-//         return res.status(404).json({ error: 'Post not found' });
-//       }
-//       res.status(200).json(post);
-//     })
-//     .catch((err) => {
-//       console.error('Error fetching post:', err);
-//       res.status(500).json({ error: 'Internal Server Error' });
-//     });
-// };
 
 const getPostBySlug = async (req, res) => {
   try {
@@ -61,7 +41,7 @@ const deletePost = (req, res) => {
     .findByIdAndDelete(req.params.id)  
     .then((post) => {
       if (!post) {
-        console.error('Post not found for deletion');  // Добавьте этот лог
+        console.error('Post not found for deletion');  
         return res.status(404).json({ error: 'Post not found' });
       }
       res
