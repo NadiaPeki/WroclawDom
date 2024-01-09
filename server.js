@@ -39,6 +39,6 @@ mongoose
   });
 
 // Запуск сервера
-app.listen(PORT, () => {
+app.listen(PORT || 4444, () => {
   console.log(`Listening on port ${PORT}`);
 });

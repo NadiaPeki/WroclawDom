@@ -83,6 +83,7 @@
   .fullPostContent p{
     font-size: 22px;
     margin-top: 15px;
+    max-width: 100%;
   }
   
   .fullPostContent h1 {

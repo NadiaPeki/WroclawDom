@@ -182,7 +182,7 @@
   .post p{
     font-size: 22px;
     margin-top: 15px;
-    width: 100%;
+    max-width: 100%;
   }
   
   .post h1 {
