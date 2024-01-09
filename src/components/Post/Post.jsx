@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 import styles from './Post.module.css';
 
 const Post = ({ post, smallSize }) => {
-  const { imageUrl, title, text, date, slug } = post;
+  const { imageUrl, title, text, date, slug, category } = post;
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
@@ -20,6 +20,10 @@ const Post = ({ post, smallSize }) => {
       <div className={styles.post}>
         {!smallSize && <h1>{title}</h1>}
         {!smallSize && <h2>{format(new Date(date), 'dd.MM.yyyy')}</h2>}
+        
+        {/* Добавили блок с h3 только для постов, которые не имеют smallSize */}
+        {!smallSize && <h3>{category}</h3>}
+
         <img
           src={`${process.env.PUBLIC_URL}${imageUrl[0]}?${new Date().getTime()}`}
           alt={title}

@@ -13,7 +13,6 @@ const Footer = () => {
         </div>
         <div className={styles.details}>
         <p>© Wroclaw Dom - twój przewodnik w świecie nieruchomości {new Date().getFullYear()}</p>
-        <p>Operated by Nadia P. Corporation</p>
         </div>
       </div>
     </footer>
